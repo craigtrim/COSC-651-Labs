@@ -1,0 +1,7 @@
+{
+  "id": "limits-v2",
+  "title": "Input limits",
+  "version": 2,
+  "text": "Accept CSV uploads only, up to 1000 rows in this teaching service. Empty files require a replacement sample. Reject an unsupported file type. Report a size-limit violation before processing rows. A diagnostic timeout should be reported as a failure, not as a clean bill of health.",
+  "tags": "empty rows size limit type timeout"
+}

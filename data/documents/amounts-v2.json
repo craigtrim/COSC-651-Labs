@@ -1,0 +1,7 @@
+{
+  "id": "amounts-v2",
+  "title": "Amounts and locale",
+  "version": 2,
+  "text": "Amounts use decimal points unless a source locale is explicitly declared. A value such as 12,50 in a quoted CSV field needs a declared locale before conversion. The service documentation does not define whether negative amounts represent refunds. Ask the product owner before changing negative-value policy.",
+  "tags": "amount decimal comma negative refund locale"
+}

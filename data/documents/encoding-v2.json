@@ -1,0 +1,7 @@
+{
+  "id": "encoding-v2",
+  "title": "Headers and encoding",
+  "version": 2,
+  "text": "Input is UTF-8 CSV. A UTF-8 byte-order mark may be removed at decode time using utf-8-sig. Normalize surrounding header whitespace before validating the field names. Required columns are id, invoice_date, and amount. Preserve unknown columns as metadata.",
+  "tags": "header encoding utf8 bom whitespace column"
+}

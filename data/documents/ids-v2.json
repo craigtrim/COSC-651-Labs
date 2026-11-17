@@ -1,0 +1,7 @@
+{
+  "id": "ids-v2",
+  "title": "Record identity",
+  "version": 2,
+  "text": "The id field must be nonempty and unique within an upload. Reject duplicate identifiers with row numbers; do not silently choose a winner. A repeated upload with the same request identifier must not create duplicate records.",
+  "tags": "id duplicate unique repeated"
+}

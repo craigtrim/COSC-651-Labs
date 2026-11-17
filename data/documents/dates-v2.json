@@ -1,0 +1,7 @@
+{
+  "id": "dates-v2",
+  "title": "Date handling",
+  "version": 2,
+  "text": "Imports require an invoice_date on every row. A blank date must be rejected with row-level feedback. Never invent a date or fill a missing date with today. Accepted explicit formats are YYYY-MM-DD and a configured day-first format. If day and month are ambiguous and the source format is not declared, ask the user for the source date format. Preserve the original data during diagnosis.",
+  "tags": "date missing blank ambiguous invoice_date"
+}

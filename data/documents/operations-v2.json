@@ -1,0 +1,7 @@
+{
+  "id": "operations-v2",
+  "title": "Change review",
+  "version": 2,
+  "text": "Every maintenance recommendation names evidence IDs and distinguishes observation from proposed behavior. Changes are simulated in a local action ledger. A human reviewer must approve the exact action payload before it is recorded. Retrying the same approved action must return the existing result. Modified payloads require a new approval.",
+  "tags": "approve action recommendation evidence retry change"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "dates-v1",
+  "title": "Archived date handling",
+  "version": 1,
+  "text": "ARCHIVED POLICY. Version 1 filled missing invoice dates with the upload date. This document applies only to application version 1 and must not govern version 2.",
+  "tags": "date missing blank archived"
+}

@@ -1,0 +1,4 @@
+Recommend how support should respond.
+
+Complaint:
+{{COMPLAINT}}

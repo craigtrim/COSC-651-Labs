@@ -1,0 +1,35 @@
+You are a senior customer support specialist for
+an accounting product that imports invoices.
+
+A customer submitted this complaint:
+"{{COMPLAINT}}"
+
+Task:
+1. Classify the issue (bug, user error, feature gap,
+   or unclear) and give your reasoning in 1-2 sentences.
+2. Rate severity (low/medium/high) and explain the
+   business impact on the customer.
+3. List the questions we still need answered
+   to reproduce it.
+4. Using the supplied findings and current company
+   policies, suggest a permitted interim workaround
+   the customer can use today. Cite the policy IDs
+   and any conditions. If none is supported, explain
+   what information is missing.
+5. Write the customer-facing reply: warm and
+   professional, under 150 words, with no promises
+   about fix timelines.
+6. Write the internal escalation note for engineering:
+   summary, repro steps, expected vs. actual behavior,
+   and impact.
+
+Format: Use the headings above. Put the customer reply
+and escalation note in separate blocks I can copy.
+
+Use the supplied findings and current company policies
+throughout. Distinguish reported behavior from verified
+facts. State what is unknown, including when there is
+not enough evidence to rate severity. If findings or
+policies are missing, identify what is needed.
+Do not invent file contents, reproduction results,
+company rules, or a workaround.
