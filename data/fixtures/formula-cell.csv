@@ -1,0 +1,2 @@
+id,invoice_date,amount,note
+D1,2026-01-02,12.50,=1+1
