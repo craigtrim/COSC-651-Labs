@@ -17,6 +17,10 @@ The shared Python support is in `src/maintenance_course/`. Public cases, CSV fix
 | 7 | [Agent collaboration](week-07/week-07.ipynb) | [week07.py](student_work/week07.py) |
 | 8 | [Integrated application](week-08/week-08.ipynb) | [week08.py](student_work/week08.py) |
 
+![Week 3 context: the student agent, supplied support, shared inputs, optional model connections, and evaluation](week-03/context.png)
+
+[Week 3 diagram as SVG](week-03/context.svg). Python support filenames in the diagram are under `src/maintenance_course/`; the student implementation is under `student_work/`.
+
 ## Run the supplied checks
 
 Use the configured course Python environment. From this checkout's root:

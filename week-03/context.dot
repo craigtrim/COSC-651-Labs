@@ -1,0 +1,151 @@
+digraph Week3Context {
+  graph [
+    rankdir=LR, bgcolor="white", pad=0.45, nodesep=0.38, ranksep=0.75,
+    splines=polyline, outputorder=edgesfirst,
+    fontname="Arial", fontsize=25, fontcolor="#172B4D",
+    label="Week 3: bounded agent and supplied lab support",
+    labelloc=t, labeljust=l
+  ];
+  node [
+    shape=box, style="rounded,filled", fillcolor="#F4F6F8",
+    color="#CAD2DD", penwidth=1.2,
+    fontname="Arial", fontsize=14, fontcolor="#172B4D",
+    margin="0.18,0.14"
+  ];
+  edge [
+    fontname="Arial", fontsize=11, color="#718096",
+    fontcolor="#42526E", arrowsize=0.75, penwidth=1.1
+  ];
+
+  notebook [
+    fillcolor="#EAF2FF", color="#7BA6E0",
+    label=<
+      <B>Week 3 notebook</B><BR/>
+      <FONT FACE="Consolas">week-03/week-03.ipynb</FONT>
+    >
+  ];
+  runs [
+    label=<
+      <B>Run context and recording</B><BR/>
+      <FONT FACE="Consolas">experiments.py</FONT><BR/>
+      <FONT POINT-SIZE="12">Cases, model calls, tool events, errors</FONT>
+    >
+  ];
+
+  subgraph cluster_workflows {
+    label="WORKFLOWS TO COMPARE"; fontsize=12;
+    fontname="Arial"; fontcolor="#42526E";
+    color="#C5D7EE"; style="rounded";
+    agent [
+      fillcolor="#DCEBFF", color="#3977C4", penwidth=2,
+      label=<
+        <B>Your bounded agent</B><BR/>
+        <FONT FACE="Consolas">student_work/week03.py</FONT><BR/>
+        <FONT POINT-SIZE="12">You implement agent()</FONT>
+      >
+    ];
+    fixed [
+      label=<
+        <B>Supplied fixed baseline</B><BR/>
+        <FONT FACE="Consolas">baselines.py: fixed()</FONT><BR/>
+        <FONT POINT-SIZE="12">CSV diagnosis + seven policies + one proposal</FONT>
+      >
+    ];
+  }
+
+  models [
+    fillcolor="#F1EAFC", color="#B29AD5",
+    label=<
+      <B>Model interface</B><BR/>
+      <FONT FACE="Consolas">models.py</FONT><BR/>
+      <FONT POINT-SIZE="12">FixtureModel, make_model, SYSTEM</FONT><BR/>
+      <FONT POINT-SIZE="12">Scripted fixture or configured live adapter</FONT>
+    >
+  ];
+  tools [
+    label=<
+      <B>Case-scoped tools</B><BR/>
+      <FONT FACE="Consolas">tools.py: ToolRegistry</FONT><BR/>
+      <FONT POINT-SIZE="12">Search policies, read documents, diagnose CSV</FONT><BR/>
+      <FONT POINT-SIZE="12">Argument checks, case scope, observed evidence</FONT>
+    >
+  ];
+  contracts [
+    label=<
+      <B>Tool and report validation</B><BR/>
+      <FONT FACE="Consolas">contracts.py</FONT><BR/>
+      <FONT POINT-SIZE="12">Argument schema, report fields, observed citations</FONT>
+    >
+  ];
+  worker [
+    label=<
+      <B>Diagnostic worker</B><BR/>
+      <FONT FACE="Consolas">worker.py</FONT><BR/>
+      <FONT POINT-SIZE="12">CSV findings and restricted arithmetic</FONT>
+    >
+  ];
+  inputs [
+    fillcolor="#FFF5DE", color="#DBBA72",
+    label=<
+      <B>Shared cases, fixtures, and policies</B><BR/>
+      <FONT FACE="Consolas">data.py + data/</FONT><BR/>
+      <FONT POINT-SIZE="12">Comparison: D01 through D10</FONT><BR/>
+      <FONT POINT-SIZE="12">Targeted cases: D11, D14, D15</FONT>
+    >
+  ];
+  claude [
+    fillcolor="#F1EAFC", color="#B29AD5", style="rounded,filled,dashed",
+    label=<
+      <B>Claude CLI</B><BR/>
+      <FONT FACE="Consolas">claude_model.py</FONT><BR/>
+      <FONT POINT-SIZE="12">Optional live connection</FONT>
+    >
+  ];
+  gemini [
+    fillcolor="#F1EAFC", color="#B29AD5", style="rounded,filled,dashed",
+    label=<
+      <B>Gemini REST service</B><BR/>
+      <FONT FACE="Consolas">GeminiModel in models.py</FONT><BR/>
+      <FONT POINT-SIZE="12">Optional live connection</FONT>
+    >
+  ];
+  shared_constant [
+    shape=note, fillcolor="#FAFAFA", color="#CDD2D9", fontsize=12,
+    label="Indirect import only:\nprompt_comparison.py\nprovides a shared text constant.\nIts Week 1 exercise is not used."
+  ];
+  evaluation [
+    fillcolor="#E8F4ED", color="#83B496",
+    label=<
+      <B>Comparison and evaluation</B><BR/>
+      <FONT POINT-SIZE="12">Your notebook / comparison code</FONT><BR/>
+      <FONT POINT-SIZE="12">Reports, traces, resources, and component checks</FONT>
+    >
+  ];
+  labels [
+    fillcolor="#FFF5DE", color="#DBBA72",
+    label=<
+      <B>Expected public answers</B><BR/>
+      <FONT FACE="Consolas">data/development-answers.json</FONT><BR/>
+      <FONT POINT-SIZE="12">Evaluation only</FONT>
+    >
+  ];
+
+  notebook -> runs [label="runs cases"];
+  runs -> agent [label="runs"];
+  runs -> fixed [label="runs"];
+  runs -> inputs [label="loads case"];
+  agent -> models [dir=both, label="requests / proposals"];
+  fixed -> models [label="one proposal"];
+  agent -> tools [dir=both, label="tool requests / observations"];
+  fixed -> tools [label="fixed evidence gathering"];
+  agent -> contracts [label="checks final report"];
+  tools -> contracts [label="checks tool arguments"];
+  tools -> worker [dir=both, label="subprocess / result"];
+  tools -> inputs [label="reads CSV and current policies"];
+  models -> claude [dir=both, style=dashed, label="if selected"];
+  models -> gemini [dir=both, style=dashed, label="if selected"];
+  models -> shared_constant [style=dotted, arrowhead=none, constraint=false];
+  runs -> evaluation [label="run records"];
+  evaluation -> contracts [label="report checks"];
+  labels -> evaluation [label="score after the run"];
+}
